@@ -10,6 +10,14 @@ public class GameManager : MonoBehaviour
     public GraphicsAssets graphicsLibrary;
     public EventManager eventManager;
 
+    public float animationDelay
+    {
+        get
+        {
+            return (1.10f-(eventManager.parameters[ParameterType.Fun].currentValue / 100f))* 0.5f;
+        }
+    }
+
     private void Awake()
     {
         if(self == null)
