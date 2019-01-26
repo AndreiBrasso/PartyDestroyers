@@ -110,8 +110,7 @@ public class EventManager : MonoBehaviour
                 {
                     parameters[effect.Key].currentValue += effect.Value;
                 }
-            }
-            GameManager.self.PassTime();
+            } 
         }
     }
 
