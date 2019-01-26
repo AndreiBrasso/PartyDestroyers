@@ -24,6 +24,10 @@ public class HUDPanel : MonoBehaviour {
 
     [SerializeField]
     Image[] values;
+    [SerializeField]
+    Image option1Filler;
+    [SerializeField]
+    Image option2Filler;
 
     private void Start()
     {
@@ -98,6 +102,9 @@ public class HUDPanel : MonoBehaviour {
 
         option1VotesText.text = Math.Floor(votes1 * 100 / totalVotes).ToString();
         option2VotesText.text = Math.Floor(votes2 * 100 / totalVotes).ToString();
+
+        option1Filler.fillAmount = votes1 / totalVotes;
+        option2Filler.fillAmount = votes2 / totalVotes;
     }
 
 }
