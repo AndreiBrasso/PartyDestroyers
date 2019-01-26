@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class EventManager : MonoBehaviour {
+public class EventManager : MonoBehaviour
+{
 
     #region Fields 
     public TextAsset textAsset;
@@ -15,6 +16,7 @@ public class EventManager : MonoBehaviour {
     public Dictionary<ParameterType, EffectParameter> parameters;
 
     private List<string> optionHistory;
+    private List<string> eventHistory;
     private GameEvent currentEvent;
 
     public event Action<GameEvent> OnEventChanged;
@@ -30,13 +32,13 @@ public class EventManager : MonoBehaviour {
 
         if (hoursPlayed > 4)
         {
-            return "0"+(hoursPlayed-4).ToString() + ":" + (minutesLeft<10?"0":"")+minutesLeft.ToString();
+            return "0" + (hoursPlayed - 4).ToString() + ":" + (minutesLeft < 10 ? "0" : "") + minutesLeft.ToString();
         }
         else
         {
             return "2" + hoursPlayed.ToString() + ":" + (minutesLeft < 10 ? "0" : "") + minutesLeft.ToString();
         }
-        
+
     }
 
     public void ResetParameters()
@@ -51,24 +53,33 @@ public class EventManager : MonoBehaviour {
     {
         var finishedEvents = FilterOutNotFinished();
         var eventsAtThisTime = GetEventsAtThisTime(finishedEvents);
-        var eventsThatFit = ChooseEventsBasedOnRequirements(eventsAtThisTime);
+        var eventsThatFit = ChooseEventsBasedOnParameters(eventsAtThisTime);
+        var eventsUnused = FilterUsedOnes(eventsThatFit);
+        if (eventsUnused.Length == 0)
+        {
+            Debug.LogWarning("No more usable events");
+            currentEvent = null;
+            GameManager.self.GameEnded(parameters[ParameterType.Time]);
+        }
+        else
+        {
+            currentEvent = ChooseRandomEvent(eventsUnused);
+        }
 
-        currentEvent = ChooseRandomEvent(eventsThatFit);
-        if(currentEvent == null)
+        if (currentEvent == null)
         {
             Debug.LogWarning("No event found");
         }
         else
         {
             Debug.Log(currentEvent.Text);
-            Debug.Log("1: " + currentEvent.Option1);
-            Debug.Log("2: " + currentEvent.Option2);
-
-            foreach(var effect in currentEvent.evtEffects)
+            if (eventHistory == null) eventHistory = new List<string>();
+            eventHistory.Add(currentEvent.EventID);
+            foreach (var effect in currentEvent.evtEffects)
             {
                 parameters[effect.Key].currentValue += effect.Value;
             }
-            if(OnEventChanged != null)
+            if (OnEventChanged != null)
             {
                 OnEventChanged(this.currentEvent);
             }
@@ -77,7 +88,7 @@ public class EventManager : MonoBehaviour {
 
     public void SelectOption(int option)
     {
-        if(currentEvent != null)
+        if (currentEvent != null)
         {
             string selectedOption = "E" + currentEvent.EventID + "_" + option;
             if (optionHistory == null)
@@ -86,7 +97,7 @@ public class EventManager : MonoBehaviour {
             }
             optionHistory.Add(selectedOption);
 
-            if(option == 1)
+            if (option == 1)
             {
                 foreach (var effect in currentEvent.o1Effect)
                 {
@@ -101,28 +112,30 @@ public class EventManager : MonoBehaviour {
                 }
             }
             GameManager.self.PassTime();
-        }       
+        }
     }
 
     public void ResetHistory()
     {
         optionHistory = new List<string>();
+        eventHistory = new List<string>();
         currentEvent = null;
     }
 
     private void Awake()
     {
         parameters = new Dictionary<ParameterType, EffectParameter>();
-        foreach(var e in effectParameters)
+        foreach (var e in effectParameters)
         {
-            if(!parameters.ContainsKey(e.parameterType))parameters.Add(e.parameterType, e);
+            if (!parameters.ContainsKey(e.parameterType)) parameters.Add(e.parameterType, e);
         }
         string jsonContent = textAsset.text;
         var eventsFromJson = JsonUtility.FromJson<EventsFromJson>(jsonContent);
         this.gameEvents = eventsFromJson.events;
-        foreach(var e in gameEvents)
+        foreach (var e in gameEvents)
         {
             e.ParseEffects();
+            e.ParseRequirements();
         }
     }
 
@@ -136,25 +149,38 @@ public class EventManager : MonoBehaviour {
     private GameEvent[] GetEventsAtThisTime(GameEvent[] gameEvents)
     {
         float currentTime = parameters[ParameterType.Time].currentValue;
-        Debug.Log("Time:"+currentTime);
+        Debug.Log("Time:" + currentTime);
 
         return (from evt in gameEvents
-               where currentTime < evt.Time_Max && currentTime >= evt.Time_Min
-               select evt).ToArray<GameEvent>();
+                where currentTime < evt.Time_Max && currentTime >= evt.Time_Min
+                select evt).ToArray<GameEvent>();
     }
 
     private GameEvent ChooseRandomEvent(GameEvent[] events)
     {
         int rIndex = UnityEngine.Random.Range(0, events.Length);
-        return (rIndex<events.Length)?events[rIndex]:null;
+        return (rIndex < events.Length) ? events[rIndex] : null;
     }
 
-    private GameEvent[] ChooseEventsBasedOnRequirements(GameEvent[] events)
+    private GameEvent[] FilterUsedOnes(GameEvent[] events)
+    {
+        List<GameEvent> notUsed = new List<GameEvent>();
+        for (int i = 0; i < events.Length; i++)
+        {
+            if (!eventHistory.Contains(events[i].EventID))
+            {
+                notUsed.Add(events[i]);
+            }
+        }
+        return notUsed.ToArray();
+    }
+
+    private GameEvent[] ChooseEventsBasedOnPrevious(GameEvent[] events)
     {
         List<GameEvent> eventsThatFit = new List<GameEvent>();
-        foreach(var e in events)
+        foreach (var e in events)
         {
-            if(e.EventRequierments == "")
+            if (e.EventRequierments == "")
             {
                 eventsThatFit.Add(e);
                 continue;
@@ -168,8 +194,41 @@ public class EventManager : MonoBehaviour {
         }
         return eventsThatFit.ToArray();
     }
+
+    private GameEvent[] ChooseEventsBasedOnParameters(GameEvent[] events)
+    {
+        List<GameEvent> eventsThatFit = new List<GameEvent>();
+        foreach (var e in events)
+        {
+            if (e.parameterRequirements == null || e.parameterRequirements.Count == 0)
+            {
+                eventsThatFit.Add(e);
+            }
+            else
+            {
+                bool fits = true;
+
+                foreach (var req in e.parameterRequirements)
+                {
+                    if (req.Value > 0 && parameters[req.Key].currentValue < req.Value)
+                    {
+
+                        fits = false;
+                        break;
+                    }
+                    if (req.Value < 0 && parameters[req.Key].currentValue > Mathf.Abs(req.Value))
+                    {
+                        fits = false;
+                        break;
+                    }
+                }
+                if (fits)
+                {
+                    eventsThatFit.Add(e);
+                }
+            }
+        }
+        return eventsThatFit.ToArray();
+    }
     #endregion
-
-
-
 }

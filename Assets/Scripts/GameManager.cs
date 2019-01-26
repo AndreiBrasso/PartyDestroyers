@@ -48,7 +48,8 @@ public class GameManager : MonoBehaviour
             case ParameterType.House: self.uiManager.retryPanel.SetText("Party ended, at " + self.eventManager.GetTimeReadable() + " your house is trashed!"); break;
             case ParameterType.Fun: self.uiManager.retryPanel.SetText("Party ended, at " + self.eventManager.GetTimeReadable() + " way too boring"); break;
             case ParameterType.Time: self.uiManager.retryPanel.SetText("Great Party! The last guests left at " + self.eventManager.GetTimeReadable() + "!"); break;
-            case ParameterType.People: self.uiManager.retryPanel.SetText("Too many people at your house, and the neighbours called the police after a fight broke out at " + self.eventManager.GetTimeReadable()); break;
+            case ParameterType.People: self.uiManager.retryPanel.SetText("Everyone left your party... Your party lasted until " + self.eventManager.GetTimeReadable()); break;
+            case ParameterType.Money: self.uiManager.retryPanel.SetText("Everyone left your party... Your party lasted until " + self.eventManager.GetTimeReadable()); break;
         }        
     }
 

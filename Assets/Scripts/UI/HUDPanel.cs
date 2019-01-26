@@ -20,6 +20,10 @@ public class HUDPanel : MonoBehaviour {
     private void Start()
     {
         GameManager.self.eventManager.OnEventChanged += NewGameEventSelected;
+        foreach(var p in GameManager.self.eventManager.parameters)
+        {
+            UpdateValue(p.Value);
+        }
         SetListeners();
     }
 

@@ -18,6 +18,8 @@ public class GameEvent
     public string Option2Effect;
     public bool NotFinished;
 
+    public Dictionary<ParameterType, int> parameterRequirements;
+
     public Dictionary<ParameterType, int> evtEffects;
     public Dictionary<ParameterType, int> o1Effect;
     public Dictionary<ParameterType, int> o2Effect;
@@ -29,10 +31,49 @@ public class GameEvent
         o2Effect = GetParameters(Option2Effect);
     }
 
+    public void ParseRequirements()
+    {
+        var splitReq = EventRequierments.Split(';');
+        var dictionary = new Dictionary<ParameterType, int>();
+        foreach (var req in splitReq)
+        {
+            if(req.Length <= 0)
+            {
+                continue;
+            }
+            switch(req.Substring(0,1))
+            {
+                case "E":
+                    EventRequierments = req;
+                    break;
+                case "P":
+                    dictionary.Add(ParameterType.People, Int32.Parse(req.Substring(1)));
+                    break;
+                case "H":
+                    dictionary.Add(ParameterType.House, Int32.Parse(req.Substring(1)));
+                    break;
+                case "B":
+                    dictionary.Add(ParameterType.Booze, Int32.Parse(req.Substring(1)));
+                    Debug.Log("added booze");
+                    break;
+                case "F":
+                    dictionary.Add(ParameterType.Fun, Int32.Parse(req.Substring(1)));
+                    break;
+                case "T":
+                    dictionary.Add(ParameterType.Time, Int32.Parse(req.Substring(1)));
+                    break;
+                case "M":
+                    dictionary.Add(ParameterType.Money, Int32.Parse(req.Substring(1)));
+                    break;
+            }
+        }
+        parameterRequirements = dictionary;
+    }
+
     private Dictionary<ParameterType, int> GetParameters(string encodedEffects)
     {
         var dictionary = new Dictionary<ParameterType, int>();
-        var eEffects = EventEffect.Split(';');
+        var eEffects = encodedEffects.Split(';');
         foreach (var e in eEffects)
         {
             if (e.Length <= 0)
@@ -93,7 +134,7 @@ public class EffectParameter
             {
                 OnChanged(this);
             }
-            if (_currentValue == 0)
+            if (_currentValue <= 0)
             {
                 if(OnFinished != null)
                 {
