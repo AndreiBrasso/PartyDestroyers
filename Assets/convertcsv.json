@@ -6,7 +6,7 @@
    "Time_Min": 0,
    "Time_Max": 1,
    "Text": "It is 20:00 but nobody arrived yet.",
-   "EventEffect": "H=90;B=90;F=10;P=1;M=100;",
+   "EventEffect": "H+90;B+90;F+10;P+1;M+100;",
    "Option1": "Call your friends",
    "Option1Effect": "",
    "Option2": "Drink a beer alone",
