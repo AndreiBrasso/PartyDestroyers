@@ -23,11 +23,19 @@ public class HUDPanel : MonoBehaviour {
     Text option2VotesText;
 
     [SerializeField]
+
+    Text twitchOptionTimeout;
+    public float timeLeft = 20.0f;
+
+    [SerializeField]
     Image[] values;
     [SerializeField]
     Image option1Filler;
     [SerializeField]
     Image option2Filler;
+
+    float votes1 = 0.0f;
+    float votes2 = 0.0f;
 
     private void Start()
     {
@@ -39,6 +47,30 @@ public class HUDPanel : MonoBehaviour {
             UpdateValue(p.Value);
         }
         SetListeners();
+    }
+
+    void Update()
+    {
+        timeLeft -= Time.deltaTime;
+        twitchOptionTimeout.text = (timeLeft).ToString("0") + " sec";
+        if (timeLeft < 0)
+        {
+            //Do something useful or Load a new game scene depending on your use-case
+            twitchOptionTimeout.text = "Time to vote is out";
+
+            if (votes1 > votes2)
+            {
+                SelectOption(1);
+            }
+            else if (votes1 < votes2)
+            {
+                SelectOption(2);
+            }
+            else
+            {
+                SelectOption(UnityEngine.Random.Range(1,2));
+            }
+        }
     }
 
     private void OnDestroy()
@@ -53,6 +85,12 @@ public class HUDPanel : MonoBehaviour {
         mainText.text = newEvent.Text;
         option1Text.text = newEvent.Option1;
         option2Text.text = newEvent.Option2;
+
+        timeLeft = 20.0f;
+        option1VotesText.text = "";
+        option2VotesText.text = ""; 
+        option1Filler.fillAmount = 0f;
+        option2Filler.fillAmount = 0f;
     }
 
     private void SetListeners()
@@ -87,9 +125,6 @@ public class HUDPanel : MonoBehaviour {
 
     public void UpdateCrowdOptions(Dictionary<string, List<string>> votes)
     {
-        Debug.Log("Update Options");
-        float votes1 = 0.0f;
-        float votes2 = 0.0f;
         if (votes["Option1"]!=null)
         {
             votes1 = votes["Option1"].Count;
@@ -99,12 +134,13 @@ public class HUDPanel : MonoBehaviour {
             votes2 = votes["Option2"].Count;
         }
         float totalVotes = votes1 + votes2;
-
-        option1VotesText.text = Math.Floor(votes1 * 100 / totalVotes).ToString();
-        option2VotesText.text = Math.Floor(votes2 * 100 / totalVotes).ToString();
+ 
+        option1VotesText.text = Math.Floor(votes1 * 100 / totalVotes).ToString() + "%";
+        option2VotesText.text = Math.Floor(votes2 * 100 / totalVotes).ToString() + "%";
 
         option1Filler.fillAmount = votes1 / totalVotes;
         option2Filler.fillAmount = votes2 / totalVotes;
+ 
     }
 
 }

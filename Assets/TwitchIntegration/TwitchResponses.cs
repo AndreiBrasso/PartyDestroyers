@@ -65,7 +65,6 @@ public class TwitchResponses : MonoBehaviour {
 
         if (OnChatVote != null)
         {
-            Debug.Log("Vote");
             OnChatVote(votes);
         }
         
