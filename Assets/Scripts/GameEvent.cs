@@ -37,7 +37,7 @@ public class GameEvent
         {
             if (e.Length <= 0)
             {
-                return;
+                return dictionary;
             }
 
             switch (e.Substring(0,1))
