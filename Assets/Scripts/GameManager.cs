@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public UIManager uiManager;
     public GraphicsAssets graphicsLibrary;
     public EventManager eventManager;
+    public TwitchResponses twitchResponses;
 
     private void Awake()
     {

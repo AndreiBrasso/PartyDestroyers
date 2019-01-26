@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 
 public class HUDPanel : MonoBehaviour {
 
@@ -15,12 +17,20 @@ public class HUDPanel : MonoBehaviour {
     Text option2Text;
 
     [SerializeField]
+    Text option1VotesText;
+
+    [SerializeField]
+    Text option2VotesText;
+
+    [SerializeField]
     Text[] valuesText;
 
     private void Start()
     {
         GameManager.self.eventManager.OnEventChanged += NewGameEventSelected;
-        foreach(var p in GameManager.self.eventManager.parameters)
+        GameManager.self.twitchResponses.OnChatVote += UpdateCrowdOptions;
+
+        foreach (var p in GameManager.self.eventManager.parameters)
         {
             UpdateValue(p.Value);
         }
@@ -30,6 +40,7 @@ public class HUDPanel : MonoBehaviour {
     private void OnDestroy()
     {
         GameManager.self.eventManager.OnEventChanged -= NewGameEventSelected;
+        GameManager.self.twitchResponses.OnChatVote += UpdateCrowdOptions;
         ClearListeners();
     }
 
@@ -72,6 +83,26 @@ public class HUDPanel : MonoBehaviour {
     public void SelectOption(int option)
     {
         GameManager.self.eventManager.SelectOption(option);
+        GameManager.self.PassTime();
+    }
+
+    public void UpdateCrowdOptions(Dictionary<string, List<string>> votes)
+    {
+        Debug.Log("Update Options");
+        float votes1 = 0.0f;
+        float votes2 = 0.0f;
+        if (votes["Option1"]!=null)
+        {
+            votes1 = votes["Option1"].Count;
+        }
+        if (votes["Option2"] != null)
+        {
+            votes2 = votes["Option2"].Count;
+        }
+        float totalVotes = votes1 + votes2;
+
+        option1VotesText.text = Math.Floor(votes1 * 100 / totalVotes).ToString();
+        option2VotesText.text = Math.Floor(votes2 * 100 / totalVotes).ToString();
     }
 
 }

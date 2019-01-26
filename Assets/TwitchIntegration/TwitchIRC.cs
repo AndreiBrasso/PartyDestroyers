@@ -121,7 +121,15 @@ public class TwitchIRC : MonoBehaviour
     //MonoBehaviour Events.
     void Start()
     {
+        GameManager.self.uiManager.retryPanel.OnTwitchChannelSelected += UpdateTwitchChannel;
     }
+    void UpdateTwitchChannel(string channel)
+    {
+        channelName = channel;
+        Debug.Log("Change channel to: " + channel);
+        StartIRC();
+    }
+
     void OnEnable()
     {
         stopThreads = false;

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ public class TwitchResponses : MonoBehaviour {
 
     public bool openEvent = false;
     public Dictionary<string, List<string>> votes;
+
+    public event Action<Dictionary<string, List<string>>> OnChatVote;
 
     void Awake() {
         votes = new Dictionary<string, List<string>>();
@@ -59,6 +62,13 @@ public class TwitchResponses : MonoBehaviour {
             default:
                 return;
         }
+
+        if (OnChatVote != null)
+        {
+            Debug.Log("Vote");
+            OnChatVote(votes);
+        }
+        
     }
 
     // Use this for initialization

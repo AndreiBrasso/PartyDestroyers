@@ -71,10 +71,15 @@ public class TwitchChatExample : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        GameManager.self.uiManager.retryPanel.OnTwitchChannelSelected += UpdateTwitchChannel;
         IRC = this.GetComponent<TwitchIRC>();
 
         TR = this.GetComponent<TwitchResponses>();
         //IRC.SendCommand("CAP REQ :twitch.tv/tags"); //register for additional data such as emote-ids, name color etc.
         IRC.messageRecievedEvent.AddListener(OnChatMsgRecieved);
+    }
+
+    void UpdateTwitchChannel(string channel) {
+
     }
 }
