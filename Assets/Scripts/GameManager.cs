@@ -65,19 +65,5 @@ public class GameManager : MonoBehaviour
         self.eventManager.parameters[ParameterType.Time].currentValue++;
         self.eventManager.TriggerNextEvent();
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.Alpha1))
-        {
-            self.eventManager.SelectOption(1);
-            PassTime();
-        }
-        if (Input.GetKeyUp(KeyCode.Alpha2))
-        {
-            self.eventManager.SelectOption(2);
-            PassTime();
-
-        }
-    }
+   
 }

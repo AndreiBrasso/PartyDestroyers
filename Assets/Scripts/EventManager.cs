@@ -17,6 +17,7 @@ public class EventManager : MonoBehaviour {
     private List<string> optionHistory;
     private GameEvent currentEvent;
 
+    public event Action<GameEvent> OnEventChanged;
 
     public string GetTimeReadable()
     {
@@ -29,11 +30,11 @@ public class EventManager : MonoBehaviour {
 
         if (hoursPlayed > 4)
         {
-            return "0"+(hoursPlayed-4).ToString() + ":" + minutesLeft.ToString();
+            return "0"+(hoursPlayed-4).ToString() + ":" + (minutesLeft<10?"0":"")+minutesLeft.ToString();
         }
         else
         {
-            return "2" + hoursPlayed.ToString() + ":" + minutesLeft.ToString();
+            return "2" + hoursPlayed.ToString() + ":" + (minutesLeft < 10 ? "0" : "") + minutesLeft.ToString();
         }
         
     }
@@ -52,7 +53,7 @@ public class EventManager : MonoBehaviour {
         var eventsAtThisTime = GetEventsAtThisTime(finishedEvents);
         var eventsThatFit = ChooseEventsBasedOnRequirements(eventsAtThisTime);
 
-        currentEvent = ChooseRandomEvent(eventsAtThisTime);
+        currentEvent = ChooseRandomEvent(eventsThatFit);
         if(currentEvent == null)
         {
             Debug.LogWarning("No event found");
@@ -62,6 +63,15 @@ public class EventManager : MonoBehaviour {
             Debug.Log(currentEvent.Text);
             Debug.Log("1: " + currentEvent.Option1);
             Debug.Log("2: " + currentEvent.Option2);
+
+            foreach(var effect in currentEvent.evtEffects)
+            {
+                parameters[effect.Key].currentValue += effect.Value;
+            }
+            if(OnEventChanged != null)
+            {
+                OnEventChanged(this.currentEvent);
+            }
         }
     }
 
@@ -75,6 +85,22 @@ public class EventManager : MonoBehaviour {
                 optionHistory = new List<string>();
             }
             optionHistory.Add(selectedOption);
+
+            if(option == 1)
+            {
+                foreach (var effect in currentEvent.o1Effect)
+                {
+                    parameters[effect.Key].currentValue += effect.Value;
+                }
+            }
+            else
+            {
+                foreach (var effect in currentEvent.o2Effect)
+                {
+                    parameters[effect.Key].currentValue += effect.Value;
+                }
+            }
+            GameManager.self.PassTime();
         }       
     }
 
@@ -94,6 +120,10 @@ public class EventManager : MonoBehaviour {
         string jsonContent = textAsset.text;
         var eventsFromJson = JsonUtility.FromJson<EventsFromJson>(jsonContent);
         this.gameEvents = eventsFromJson.events;
+        foreach(var e in gameEvents)
+        {
+            e.ParseEffects();
+        }
     }
 
     private GameEvent[] FilterOutNotFinished()

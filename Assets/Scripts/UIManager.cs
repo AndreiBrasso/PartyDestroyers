@@ -5,6 +5,6 @@ using UnityEngine;
 public class UIManager : MonoBehaviour {
 
     public RetryPanel retryPanel;
-	
+    public HUDPanel hudPanel;
     
 }
