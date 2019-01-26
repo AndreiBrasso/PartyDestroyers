@@ -35,6 +35,11 @@ public class GameEvent
         var eEffects = EventEffect.Split(';');
         foreach (var e in eEffects)
         {
+            if (e.Length <= 0)
+            {
+                return;
+            }
+
             switch (e.Substring(0,1))
             {
                 case "P":
