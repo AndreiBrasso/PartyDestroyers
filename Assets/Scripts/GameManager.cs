@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public EventManager eventManager;
     public TwitchResponses twitchResponses;
 
+    public event System.Action OnRestartGame;
+
     public float animationDelay
     {
         get
@@ -68,6 +70,10 @@ public class GameManager : MonoBehaviour
         self.eventManager.ResetParameters();
         self.eventManager.ResetHistory();
         self.eventManager.TriggerNextEvent();
+        if(OnRestartGame != null)
+        {
+            OnRestartGame();
+        }
     }
 
     public void PassTime()

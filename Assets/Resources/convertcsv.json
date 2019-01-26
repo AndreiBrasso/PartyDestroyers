@@ -1,8 +1,7 @@
 {
-
   "events": [
     {
-      "EventID": "1",
+      "EventID": 1,
       "EventRequierments": "",
       "Time_Min": 0,
       "Time_Max": 1,
@@ -15,7 +14,7 @@
       "NotFinished": 0
     },
     {
-      "EventID": "2",
+      "EventID": 2,
       "EventRequierments": "E1_1",
       "Time_Min": 1,
       "Time_Max": 2,
@@ -28,7 +27,7 @@
       "NotFinished": 0
     },
     {
-      "EventID": "3",
+      "EventID": 3,
       "EventRequierments": "E1_2",
       "Time_Min": 1,
       "Time_Max": 2,
@@ -41,20 +40,20 @@
       "NotFinished": 0
     },
     {
-      "EventID": "4",
+      "EventID": 4,
       "EventRequierments": "",
       "Time_Min": 2,
       "Time_Max": 4,
-      "Text": "A few more people arrived and they bring people you dont know. Will you let the friends of friends in?",
+      "Text": "A few more people arrived and they bring people you don't know. Will you let the friends of friends in?",
       "EventEffect": "F+5;P+3",
-      "Option1": "Hell yeha!",
+      "Option1": "Hell yeah!",
       "Option1Effect": "F+5;P+3",
       "Option2": "Sorry no today",
       "Option2Effect": "F-8",
       "NotFinished": 0
     },
     {
-      "EventID": "5",
+      "EventID": 5,
       "EventRequierments": "E3_2",
       "Time_Min": 2,
       "Time_Max": 4,
@@ -62,12 +61,12 @@
       "EventEffect": "H-3",
       "Option1": "Try to repair it",
       "Option1Effect": "H+2",
-      "Option2": "Dont care",
+      "Option2": "Don't care",
       "Option2Effect": "F+3",
       "NotFinished": 0
     },
     {
-      "EventID": "6",
+      "EventID": 6,
       "EventRequierments": "",
       "Time_Min": 3,
       "Time_Max": 100,
@@ -80,10 +79,10 @@
       "NotFinished": 0
     },
     {
-      "EventID": "7",
+      "EventID": 7,
       "EventRequierments": "",
-      "Time_Min": null,
-      "Time_Max": null,
+      "Time_Min": 3,
+      "Time_Max": 1000,
       "Text": "Your crush Cristina asks you to go outside with her",
       "EventEffect": "F+20",
       "Option1": "Smile and take her hand",
@@ -95,8 +94,8 @@
     {
       "EventID": "7b",
       "EventRequierments": "E7_1",
-      "Time_Min": null,
-      "Time_Max": null,
+      "Time_Min": 3,
+      "Time_Max": 1000,
       "Text": "You watch the stars with Cristina while you hear someone screaming from the house",
       "EventEffect": "H-5",
       "Option1": "Go back to see what is happening",
@@ -108,8 +107,8 @@
     {
       "EventID": "7c",
       "EventRequierments": "E7b_2",
-      "Time_Min": null,
-      "Time_Max": null,
+      "Time_Min": 3,
+      "Time_Max": 1000,
       "Text": "Cristina says she feels a little cold",
       "EventEffect": "",
       "Option1": "Offer her your hoodie",
@@ -121,8 +120,8 @@
     {
       "EventID": "7d",
       "EventRequierments": "E7c_1",
-      "Time_Min": null,
-      "Time_Max": null,
+      "Time_Min": 3,
+      "Time_Max": 1000,
       "Text": "Cristina looks a little disappointed",
       "EventEffect": "F-2",
       "Option1": "Take her hand",
@@ -134,9 +133,9 @@
     {
       "EventID": "7e",
       "EventRequierments": "E7c_2",
-      "Time_Min": null,
-      "Time_Max": null,
-      "Text": "Cristina kiss you back",
+      "Time_Min": 3,
+      "Time_Max": 1000,
+      "Text": "Cristina kisses you back",
       "EventEffect": "",
       "Option1": "",
       "Option1Effect": "",
@@ -147,8 +146,8 @@
     {
       "EventID": "",
       "EventRequierments": "",
-      "Time_Min": null,
-      "Time_Max": null,
+      "Time_Min": 3,
+      "Time_Max": 1000,
       "Text": "",
       "EventEffect": "",
       "Option1": "",
@@ -158,36 +157,36 @@
       "NotFinished": 1
     },
     {
-      "EventID": "8",
+      "EventID": 8,
       "EventRequierments": "",
-      "Time_Min": null,
-      "Time_Max": null,
+      "Time_Min": 3,
+      "Time_Max": 1000,
       "Text": "Jenna turns the music to max volume",
       "EventEffect": "",
       "Option1": "Start dancing",
       "Option1Effect": "",
       "Option2": "Turn the volume down again",
       "Option2Effect": "",
-      "NotFinished": 1
+      "NotFinished": 0
     },
     {
       "EventID": "8a",
-      "EventRequierments": "8_1",
-      "Time_Min": null,
-      "Time_Max": null,
+      "EventRequierments": "E8_1",
+      "Time_Min": 3,
+      "Time_Max": 1000,
       "Text": "",
       "EventEffect": "",
       "Option1": "",
       "Option1Effect": "",
       "Option2": "",
       "Option2Effect": "",
-      "NotFinished": null
+      "NotFinished": 1
     },
     {
       "EventID": "8b",
-      "EventRequierments": "8_1",
-      "Time_Min": null,
-      "Time_Max": null,
+      "EventRequierments": "E8_1",
+      "Time_Min": 3,
+      "Time_Max": 1000,
       "Text": "The neighbors come by and say the music is too loud",
       "EventEffect": "F-3",
       "Option1": "Tell them to fuck off",
@@ -197,10 +196,10 @@
       "NotFinished": 0
     },
     {
-      "EventID": "9",
+      "EventID": 9,
       "EventRequierments": "",
-      "Time_Min": null,
-      "Time_Max": null,
+      "Time_Min": 3,
+      "Time_Max": 1000,
       "Text": "Tim suggest to play Strip poker with Cristina, Jenna and you",
       "EventEffect": "",
       "Option1": "Get the deck of cards",
@@ -212,8 +211,8 @@
     {
       "EventID": "9a",
       "EventRequierments": "E9_1",
-      "Time_Min": null,
-      "Time_Max": null,
+      "Time_Min": 3,
+      "Time_Max": 1000,
       "Text": "Everyone has lost some clothes. Jenna goes all in, while you have two kings in your hand. Go all in too or fold?",
       "EventEffect": "F+1",
       "Option1": "ALL IN!",
@@ -223,23 +222,36 @@
       "NotFinished": 0
     },
     {
+      "EventID": "",
+      "EventRequierments": "",
+      "Time_Min": "",
+      "Time_Max": "",
+      "Text": "",
+      "EventEffect": "",
+      "Option1": "",
+      "Option1Effect": "",
+      "Option2": "",
+      "Option2Effect": "",
+      "NotFinished": 1
+    },
+    {
       "EventID": "9b",
       "EventRequierments": "E9a_1",
-      "Time_Min": null,
-      "Time_Max": null,
+      "Time_Min": 3,
+      "Time_Max": 1000,
       "Text": "Jenna has a royal Flush an wins all your chips. You only have your underpants that they say you need to remove now",
       "EventEffect": "",
       "Option1": "Get naked!",
       "Option1Effect": "F+10",
       "Option2": "Tell them the game is over",
       "Option2Effect": "F-10",
-      "NotFinished": null
+      "NotFinished": ""
     },
     {
-      "EventID": "10",
+      "EventID": 10,
       "EventRequierments": "",
-      "Time_Min": null,
-      "Time_Max": null,
+      "Time_Min": 3,
+      "Time_Max": 1000,
       "Text": "Tim pulls out the beer pong",
       "EventEffect": "F+5",
       "Option1": "Grab some beers and say that you are the best peer pong player on the Planet",
@@ -249,10 +261,10 @@
       "NotFinished": 0
     },
     {
-      "EventID": "11",
+      "EventID": 11,
       "EventRequierments": "E10_1",
-      "Time_Min": null,
-      "Time_Max": null,
+      "Time_Min": 3,
+      "Time_Max": 1000,
       "Text": "You really are the best beer pong player on the Planet. Tim has to drink all the time until he vomits on the floor",
       "EventEffect": "H-10",
       "Option1": "Bring Tim to the toilet and call a Taxi for him",
@@ -262,10 +274,10 @@
       "NotFinished": 0
     },
     {
-      "EventID": "12",
+      "EventID": 12,
       "EventRequierments": "",
-      "Time_Min": null,
-      "Time_Max": null,
+      "Time_Min": 3,
+      "Time_Max": 1000,
       "Text": "Alina falls over the table while dancing",
       "EventEffect": "",
       "Option1": "Call an ambulance",
@@ -275,10 +287,10 @@
       "NotFinished": 0
     },
     {
-      "EventID": "13",
+      "EventID": 13,
       "EventRequierments": "B-10",
       "Time_Min": 10,
-      "Time_Max": null,
+      "Time_Max": 1000,
       "Text": "People are complaining that you run out of beer",
       "EventEffect": "F-10",
       "Option1": "Send Tim to buy more beer",
@@ -288,10 +300,10 @@
       "NotFinished": 0
     },
     {
-      "EventID": "14",
+      "EventID": 14,
       "EventRequierments": "",
       "Time_Min": 15,
-      "Time_Max": null,
+      "Time_Max": 1000,
       "Text": "Marry accuses Jason of cheating on her with Jenna",
       "EventEffect": "F-5",
       "Option1": "Tell Marry that you have been with Jason all the time drinking beer and nothing happened",
@@ -301,10 +313,10 @@
       "NotFinished": 0
     },
     {
-      "EventID": "15",
+      "EventID": 15,
       "EventRequierments": "E4_1",
       "Time_Min": 15,
-      "Time_Max": null,
+      "Time_Max": 1000,
       "Text": "The friends of friends you let in offer to give you 10$ if they can take some beers and leave with them",
       "EventEffect": "",
       "Option1": "OK",
@@ -314,7 +326,7 @@
       "NotFinished": 0
     },
     {
-      "EventID": "16",
+      "EventID": 16,
       "EventRequierments": "",
       "Time_Min": 10,
       "Time_Max": 15,
@@ -327,7 +339,7 @@
       "NotFinished": 0
     },
     {
-      "EventID": "17",
+      "EventID": 17,
       "EventRequierments": "",
       "Time_Min": 10,
       "Time_Max": 15,
@@ -340,20 +352,20 @@
       "NotFinished": 1
     },
     {
-      "EventID": "18",
+      "EventID": 18,
       "EventRequierments": "",
       "Time_Min": 5,
       "Time_Max": 100,
       "Text": "Nothing is really happening. What do you want to do?",
       "EventEffect": "F-5",
-      "Option1": "Start a Karaokee session",
+      "Option1": "Start a Karaoke session",
       "Option1Effect": "F+10;H-5",
       "Option2": "Bring everyone a shot",
       "Option2Effect": "F+5;B-5",
       "NotFinished": 0
     },
     {
-      "EventID": "19",
+      "EventID": 19,
       "EventRequierments": "",
       "Time_Min": 5,
       "Time_Max": 100,
@@ -366,10 +378,10 @@
       "NotFinished": 0
     },
     {
-      "EventID": "20",
+      "EventID": 20,
       "EventRequierments": "",
-      "Time_Min": null,
-      "Time_Max": null,
+      "Time_Min": 5,
+      "Time_Max": 1000,
       "Text": "Alina asks you if she can call her friend Sarah to join the Party? She really really wants her here",
       "EventEffect": "",
       "Option1": "The more the merrier",
@@ -379,11 +391,11 @@
       "NotFinished": 0
     },
     {
-      "EventID": "21",
+      "EventID": 21,
       "EventRequierments": "E20_1",
-      "Time_Min": null,
-      "Time_Max": null,
-      "Text": "Sarah is a wild one. She says if you give her some beers and 20$ she wants to go to the bedroom for a special suprise",
+      "Time_Min": 5,
+      "Time_Max": 1000,
+      "Text": "Sarah is a wild one. She says if you give her some beers and 20$ she wants to go to the bedroom for a special surprise",
       "EventEffect": "F+2",
       "Option1": "Why not?",
       "Option1Effect": "F+10;M-20;B-2",
@@ -392,10 +404,23 @@
       "NotFinished": 0
     },
     {
-      "EventID": "22",
+      "EventID": "",
+      "EventRequierments": "",
+      "Time_Min": "",
+      "Time_Max": "",
+      "Text": "",
+      "EventEffect": "",
+      "Option1": "",
+      "Option1Effect": "",
+      "Option2": "",
+      "Option2Effect": "",
+      "NotFinished": 1
+    },
+    {
+      "EventID": 22,
       "EventRequierments": "E21_1",
-      "Time_Min": null,
-      "Time_Max": null,
+      "Time_Min": 5,
+      "Time_Max": 1000,
       "Text": "Sarah takes out a rope and wants to tie you to the bed",
       "EventEffect": "F+2",
       "Option1": "No risk no fun",
@@ -405,10 +430,10 @@
       "NotFinished": 0
     },
     {
-      "EventID": "23",
+      "EventID": 23,
       "EventRequierments": "E22_1",
-      "Time_Min": null,
-      "Time_Max": null,
+      "Time_Min": 5,
+      "Time_Max": 1000,
       "Text": "She's ties you to the bed, takes off your shirt and jeans and ..... leaves",
       "EventEffect": "",
       "Option1": "Wait for her",
@@ -418,10 +443,10 @@
       "NotFinished": 0
     },
     {
-      "EventID": "24",
+      "EventID": 24,
       "EventRequierments": "E22_2",
-      "Time_Min": null,
-      "Time_Max": null,
+      "Time_Min": 5,
+      "Time_Max": 1000,
       "Text": "Sarah smirks, gives you a kiss on your cheeks says no and leaves the room",
       "EventEffect": "F+1",
       "Option1": "Grab her and pull her back",
@@ -431,23 +456,23 @@
       "NotFinished": 0
     },
     {
-      "EventID": "25",
+      "EventID": 25,
       "EventRequierments": "E24_1",
-      "Time_Min": null,
-      "Time_Max": null,
+      "Time_Min": 5,
+      "Time_Max": 1000,
       "Text": "Sarah slaps you in the face and yells at you to let her go",
       "EventEffect": "F-15",
-      "Option1": "Dont be an asshole and let her go",
+      "Option1": "Don't be an asshole and let her go",
       "Option1Effect": "",
-      "Option2": "Seriously dont be an asshole and let her go",
+      "Option2": "Seriously don't be an asshole and let her go",
       "Option2Effect": "",
       "NotFinished": 0
     },
     {
-      "EventID": "26",
+      "EventID": 26,
       "EventRequierments": "E23_1",
-      "Time_Min": null,
-      "Time_Max": null,
+      "Time_Min": 5,
+      "Time_Max": 1000,
       "Text": "While you wait Cristina comes into the room and asks you what happend",
       "EventEffect": "",
       "Option1": "Tell the truth",
@@ -457,10 +482,10 @@
       "NotFinished": 0
     },
     {
-      "EventID": "27",
+      "EventID": 27,
       "EventRequierments": "E26_1",
-      "Time_Min": null,
-      "Time_Max": null,
+      "Time_Min": 5,
+      "Time_Max": 1000,
       "Text": "Cristina makes fun of you but she is so nice to untie you and let you go. You feel ashamed",
       "EventEffect": "F-15",
       "Option1": "Swear to never trust a random girl with a crazy idea again",
@@ -470,37 +495,37 @@
       "NotFinished": 0
     },
     {
-      "EventID": "28",
+      "EventID": 28,
       "EventRequierments": "E26_2",
-      "Time_Min": null,
-      "Time_Max": null,
-      "Text": "",
-      "EventEffect": "",
-      "Option1": "",
-      "Option1Effect": "",
-      "Option2": "",
-      "Option2Effect": "",
+      "Time_Min": 5,
+      "Time_Max": 1000,
+      "Text": "Cristina laughs at you and calls all friends to show make even more fun of you",
+      "EventEffect": "F-10",
+      "Option1": "Try to find an excuse",
+      "Option1Effect": "F-5",
+      "Option2": "Own it and laugh with them",
+      "Option2Effect": "F+10",
       "NotFinished": 0
     },
     {
-      "EventID": "29",
+      "EventID": 29,
       "EventRequierments": "",
-      "Time_Min": null,
-      "Time_Max": null,
+      "Time_Min": 5,
+      "Time_Max": 1000,
       "Text": "A Skunk jumps through a window into the room",
       "EventEffect": "F+3",
       "Option1": "Attack it in scare it out",
       "Option1Effect": "",
-      "Option2": "Considering most of your male friends smell like a skunk after sport you dont care much",
+      "Option2": "Considering most of your male friends smell like a skunk after sport you don't care much",
       "Option2Effect": "",
       "NotFinished": 0
     },
     {
-      "EventID": "30",
+      "EventID": 30,
       "EventRequierments": "E29_1",
-      "Time_Min": null,
-      "Time_Max": null,
-      "Text": "The Skunk feels threatned and sprays as much it can. Marry and Jason leave because of the smell",
+      "Time_Min": 5,
+      "Time_Max": 1000,
+      "Text": "The Skunk feels threatened and sprays as much it can. Marry and Jason leave because of the smell",
       "EventEffect": "H-20;F-10;",
       "Option1": "Buy some room refresher spray",
       "Option1Effect": "M-10;F+5;H+5",
@@ -509,16 +534,107 @@
       "NotFinished": 0
     },
     {
-      "EventID": "31",
+      "EventID": 31,
       "EventRequierments": "E29_2",
-      "Time_Min": null,
-      "Time_Max": null,
+      "Time_Min": 5,
+      "Time_Max": 1000,
       "Text": "The Skunk is the attraction of the party and everyone is cool with it. It leaves after 20 minutes",
       "EventEffect": "F+10",
       "Option1": "Announce that Skunks are your new favorite animals",
       "Option1Effect": "F+5",
       "Option2": "Close the window the Skunk came in",
       "Option2Effect": "",
+      "NotFinished": 0
+    },
+    {
+      "EventID": 32,
+      "EventRequierments": "",
+      "Time_Min": 5,
+      "Time_Max": 1000,
+      "Text": "David wants you to drink a full glass of Vodka in one go with him",
+      "EventEffect": "F+2",
+      "Option1": "Make it to glasses for each of you!",
+      "Option1Effect": "F+10;B-10",
+      "Option2": "No way, you know that David does not tolerate alcohol that well",
+      "Option2Effect": "F-5",
+      "NotFinished": 0
+    },
+    {
+      "EventID": 33,
+      "EventRequierments": "E32_1",
+      "Time_Min": 5,
+      "Time_Max": 1000,
+      "Text": "David can not even keep the first glass of Vodka inside and vomit all over the floor",
+      "EventEffect": "H-10;",
+      "Option1": "Tell you friends to take care of him",
+      "Option1Effect": "F-10",
+      "Option2": "Buy a mop and clean up",
+      "Option2Effect": "H+5;M-10",
+      "NotFinished": 0
+    },
+    {
+      "EventID": 34,
+      "EventRequierments": "E32_2",
+      "Time_Min": 5,
+      "Time_Max": 1000,
+      "Text": "Everyone thinks you are lame.",
+      "EventEffect": "F-5",
+      "Option1": "Pay for a round of drinks",
+      "Option1Effect": "B-10;M-10",
+      "Option2": "Tell a joke you think is funny",
+      "Option2Effect": "F-10",
+      "NotFinished": 0
+    },
+    {
+      "EventID": 35,
+      "EventRequierments": "",
+      "Time_Min": 5,
+      "Time_Max": 1000,
+      "Text": "You see Tim smoking in the house",
+      "EventEffect": "H-5",
+      "Option1": "Take his cigarette and throw it away",
+      "Option1Effect": "H+3;F-10",
+      "Option2": "Ask Tim to give you a cigarette to smoke with him",
+      "Option2Effect": "H-5;F+1",
+      "NotFinished": 0
+    },
+    {
+      "EventID": 36,
+      "EventRequierments": "H-10",
+      "Time_Min": 5,
+      "Time_Max": 1000,
+      "Text": "Marry asks if she can clean up a little bit because of all the damages",
+      "EventEffect": "H-5",
+      "Option1": "Yes please, I'll get a beer in the meantime",
+      "Option1Effect": "F-5;H+5;B-1",
+      "Option2": "No lets not waist our time and just drink some more",
+      "Option2Effect": "H-5;F+5;B-5",
+      "NotFinished": 0
+    },
+    {
+      "EventID": 37,
+      "EventRequierments": "F+80",
+      "Time_Min": 5,
+      "Time_Max": 1000,
+      "Text": "Everyone is dancing and screaming and drinking",
+      "EventEffect": "F+5",
+      "Option1": "Ask them to be a bit more quite",
+      "Option1Effect": "F-20;",
+      "Option2": "Join the dancing, and do your special handstand dance!",
+      "Option2Effect": "F+5;H-10",
+      "NotFinished": 0
+    },
+    {
+      "EventID": 38,
+      "EventRequierments": "B+10",
+      "Time_Min": 5,
+      "Time_Max": 1000,
+      "Text": "Tim offers you 10$ if you can 3 beers in a row",
+      "EventEffect": "",
+      "Option1": "I can do 4 in a row easy",
+      "Option1Effect": "B-10;F+5;H-5;M+10",
+      "Option2": "Tell him to drink 3 himself first",
+      "Option2Effect": "B-7;H-10",
       "NotFinished": 0
     }
   ]

@@ -26,13 +26,19 @@ public class HUDPanel : MonoBehaviour {
 
     Text twitchOptionTimeout;
     public float timeLeft = 20.0f;
-
+    bool timerStopped = false;
     [SerializeField]
     Image[] values;
     [SerializeField]
     Image option1Filler;
     [SerializeField]
     Image option2Filler;
+
+    [SerializeField]
+    Button option1;
+
+    [SerializeField]
+    Button option2;
 
     float votes1 = 0.0f;
     float votes2 = 0.0f;
@@ -48,12 +54,12 @@ public class HUDPanel : MonoBehaviour {
         }
         SetListeners();
     }
-
+   
     void Update()
     {
-        timeLeft -= Time.deltaTime;
+        if(!timerStopped)timeLeft -= Time.deltaTime;
         twitchOptionTimeout.text = (timeLeft).ToString("0") + " sec";
-        if (timeLeft < 0)
+        if (timeLeft < 0 && !timerStopped)
         {
             //Do something useful or Load a new game scene depending on your use-case
             twitchOptionTimeout.text = "Time to vote is out";
@@ -70,6 +76,7 @@ public class HUDPanel : MonoBehaviour {
             {
                 SelectOption(UnityEngine.Random.Range(1,2));
             }
+            timeLeft = 20.0f;
         }
     }
 
@@ -91,6 +98,9 @@ public class HUDPanel : MonoBehaviour {
         option2VotesText.text = ""; 
         option1Filler.fillAmount = 0f;
         option2Filler.fillAmount = 0f;
+
+        option1.image.color = Color.white;
+        option2.image.color = Color.white;
     }
 
     private void SetListeners()
@@ -119,6 +129,24 @@ public class HUDPanel : MonoBehaviour {
 
     public void SelectOption(int option)
     {
+        if (option == 1)
+        {
+            option1.image.color = new Color(0.86f, 0.9f, 0.8f);
+            
+        }
+        else
+        {
+            option2.image.color = new Color(0.86f, 0.9f, 0.8f);
+        }
+        StopAllCoroutines();
+        StartCoroutine(SelectOptionDelayed(option));
+    }
+
+    IEnumerator SelectOptionDelayed(int option)
+    {
+        timerStopped = true;
+        yield return new WaitForSeconds(2f);
+        timerStopped = false;
         GameManager.self.eventManager.SelectOption(option);
         GameManager.self.PassTime();
     }
