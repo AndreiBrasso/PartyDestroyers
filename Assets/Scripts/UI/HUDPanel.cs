@@ -23,7 +23,7 @@ public class HUDPanel : MonoBehaviour {
     Text option2VotesText;
 
     [SerializeField]
-    Text[] valuesText;
+    Image[] values;
 
     private void Start()
     {
@@ -53,7 +53,7 @@ public class HUDPanel : MonoBehaviour {
 
     private void SetListeners()
     {
-        for(int i = 0; i<valuesText.Length; i++)
+        for(int i = 0; i< values.Length; i++)
         {
             GameManager.self.eventManager.parameters[(ParameterType)i].OnChanged += UpdateValue;    
         }
@@ -61,7 +61,7 @@ public class HUDPanel : MonoBehaviour {
 
     private void ClearListeners()
     {
-        for (int i = 0; i < valuesText.Length; i++)
+        for (int i = 0; i < values.Length; i++)
         {
             GameManager.self.eventManager.parameters[(ParameterType)i].OnChanged -= UpdateValue;
         }
@@ -69,14 +69,9 @@ public class HUDPanel : MonoBehaviour {
 
     public void UpdateValue(EffectParameter parameter)
     {
-        if (parameter.parameterType == ParameterType.Time)
-        {
-            valuesText[(int)parameter.parameterType].text = parameter.parameterType + ": " + GameManager.self.eventManager.GetTimeReadable();
-        }
-        else
-        {
-            valuesText[(int)parameter.parameterType].text = parameter.parameterType + ": " + parameter.currentValue.ToString("F2");
-        }
+         
+         values[(int)parameter.parameterType].fillAmount =  (parameter.currentValue / 100);
+         
         
     }
 
