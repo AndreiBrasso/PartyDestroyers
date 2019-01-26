@@ -40,7 +40,7 @@ public class HUDPanel : MonoBehaviour {
     private void OnDestroy()
     {
         GameManager.self.eventManager.OnEventChanged -= NewGameEventSelected;
-        GameManager.self.twitchResponses.OnChatVote += UpdateCrowdOptions;
+        GameManager.self.twitchResponses.OnChatVote -= UpdateCrowdOptions;
         ClearListeners();
     }
 
