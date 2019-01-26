@@ -35,7 +35,27 @@ public class GameEvent
         var eEffects = EventEffect.Split(';');
         foreach (var e in eEffects)
         {
-
+            switch (e.Substring(0,1))
+            {
+                case "P":
+                    dictionary.Add(ParameterType.People, Int32.Parse(e.Substring(1)));
+                    break;
+                case "H":
+                    dictionary.Add(ParameterType.House, Int32.Parse(e.Substring(1)));
+                    break;
+                case "B":
+                    dictionary.Add(ParameterType.Booze, Int32.Parse(e.Substring(1)));
+                    break;
+                case "F":
+                    dictionary.Add(ParameterType.Fun, Int32.Parse(e.Substring(1)));
+                    break;
+                case "T":
+                    dictionary.Add(ParameterType.Time, Int32.Parse(e.Substring(1)));
+                    break;
+                case "M":
+                    dictionary.Add(ParameterType.Money, Int32.Parse(e.Substring(1)));
+                    break;
+            }
         }
         return dictionary;
     }
