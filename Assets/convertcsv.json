@@ -1,5 +1,4 @@
-﻿{
-"events":[
+[
  {
    "EventID": "1",
    "EventRequierments": "",
@@ -8,7 +7,7 @@
    "Text": "It is 20:00 but nobody arrived yet.",
    "EventEffect": "H+90;B+90;F+10;P+1;M+100;",
    "Option1": "Call your friends",
-   "Option1Effect": "",
+   "Option1Effect": "F+1",
    "Option2": "Drink a beer alone",
    "Option2Effect": "B-1;F+1",
    "NotFinished": 0
@@ -57,13 +56,13 @@
    "EventRequierments": "E3_2",
    "Time_Min": 2,
    "Time_Max": 4,
-   "Text": "From your parents bedroom you hear a weird noise. Peter and Marry broke the slat frame of the bed.",
+   "Text": "From your parents bedroom you hear a weird noises. Peter and Marry broke the slat frame of the bed.",
    "EventEffect": "H-3",
    "Option1": "Try to repair it",
    "Option1Effect": "H+2",
    "Option2": "Dont care",
    "Option2Effect": "F+3",
-   "NotFinished": 1
+   "NotFinished": 0
  },
  {
    "EventID": "6",
@@ -76,7 +75,7 @@
    "Option1Effect": "",
    "Option2": "Put a sign on the door �Pee and poop in the garden�",
    "Option2Effect": "H-10",
-   "NotFinished": 1
+   "NotFinished": 0
  },
  {
    "EventID": "7",
@@ -85,11 +84,11 @@
    "Time_Max": null,
    "Text": "Your crush Cristina asks you to go outside with her",
    "EventEffect": "F+20",
-   "Option1": "",
-   "Option1Effect": "",
-   "Option2": "",
-   "Option2Effect": "",
-   "NotFinished": 1
+   "Option1": "Smile and take her hand",
+   "Option1Effect": "F+5",
+   "Option2": "Maybe later",
+   "Option2Effect": "F-20",
+   "NotFinished": 0
  },
  {
    "EventID": "7b",
@@ -99,10 +98,10 @@
    "Text": "You watch the stars with Cristina while you hear someone screaming from the house",
    "EventEffect": "H-5",
    "Option1": "Go back to see what is happening",
-   "Option1Effect": "H+5",
+   "Option1Effect": "H+5;F-10",
    "Option2": "Make a joke and stay outside",
-   "Option2Effect": "",
-   "NotFinished": 1
+   "Option2Effect": "H-3;F+1",
+   "NotFinished": 0
  },
  {
    "EventID": "7c",
@@ -115,27 +114,27 @@
    "Option1Effect": "",
    "Option2": "Give her a big hug to make her feel warmer",
    "Option2Effect": "",
-   "NotFinished": 1
+   "NotFinished": 0
  },
  {
    "EventID": "7d",
    "EventRequierments": "E7c_1",
    "Time_Min": null,
    "Time_Max": null,
-   "Text": "She looks a little disapointed",
+   "Text": "Cristina looks a little disappointed",
    "EventEffect": "F-2",
    "Option1": "Take her hand",
-   "Option1Effect": "",
-   "Option2": "",
-   "Option2Effect": "",
-   "NotFinished": 1
+   "Option1Effect": "F+3",
+   "Option2": "Go inside, she probably misses her friends",
+   "Option2Effect": "F-3",
+   "NotFinished": 0
  },
  {
    "EventID": "7e",
    "EventRequierments": "E7c_2",
    "Time_Min": null,
    "Time_Max": null,
-   "Text": "",
+   "Text": "Cristina kiss you back",
    "EventEffect": "",
    "Option1": "",
    "Option1Effect": "",
@@ -161,39 +160,52 @@
    "EventRequierments": "",
    "Time_Min": null,
    "Time_Max": null,
+   "Text": "Jenna turns the music to max volume",
+   "EventEffect": "",
+   "Option1": "Start dancing",
+   "Option1Effect": "",
+   "Option2": "Turn the volume down again",
+   "Option2Effect": "",
+   "NotFinished": 1
+ },
+ {
+   "EventID": "8a",
+   "EventRequierments": "8_1",
+   "Time_Min": null,
+   "Time_Max": null,
    "Text": "",
    "EventEffect": "",
    "Option1": "",
    "Option1Effect": "",
    "Option2": "",
    "Option2Effect": "",
-   "NotFinished": 1
+   "NotFinished": null
  },
  {
    "EventID": "8b",
    "EventRequierments": "8_1",
    "Time_Min": null,
    "Time_Max": null,
-   "Text": "The neighbours come by and say the music is too loud",
+   "Text": "The neighbors come by and say the music is too loud",
    "EventEffect": "F-3",
    "Option1": "Tell them to fuck off",
    "Option1Effect": "F+5",
    "Option2": "Turn the music down",
    "Option2Effect": "F-2",
-   "NotFinished": 1
+   "NotFinished": 0
  },
  {
    "EventID": "9",
    "EventRequierments": "",
    "Time_Min": null,
    "Time_Max": null,
-   "Text": "Tim suggest to play Strippoker with Cristina, Jenna and you",
+   "Text": "Tim suggest to play Strip poker with Cristina, Jenna and you",
    "EventEffect": "",
    "Option1": "Get the deck of cards",
    "Option1Effect": "",
    "Option2": "Say that you have no cards in the house",
    "Option2Effect": "",
-   "NotFinished": 1
+   "NotFinished": 0
  },
  {
    "EventID": "",
@@ -206,7 +218,7 @@
    "Option1Effect": "F+2",
    "Option2": "Fold",
    "Option2Effect": "F-4",
-   "NotFinished": 1
+   "NotFinished": 0
  },
  {
    "EventID": "10",
@@ -219,10 +231,10 @@
    "Option1Effect": "F+15",
    "Option2": "Tell him to only play outside",
    "Option2Effect": "F-5",
-   "NotFinished": 1
+   "NotFinished": 0
  },
  {
-   "EventID": "",
+   "EventID": "11",
    "EventRequierments": "E10_1",
    "Time_Min": null,
    "Time_Max": null,
@@ -232,7 +244,84 @@
    "Option1Effect": "M-20",
    "Option2": "Just tell he to vomit in the garden next time",
    "Option2Effect": "H-5",
+   "NotFinished": 0
+ },
+ {
+   "EventID": "12",
+   "EventRequierments": "",
+   "Time_Min": null,
+   "Time_Max": null,
+   "Text": "Alina falls over the table while dancing",
+   "EventEffect": "",
+   "Option1": "Call an ambulance",
+   "Option1Effect": "",
+   "Option2": "Tell her to rest on your parents bed",
+   "Option2Effect": "",
+   "NotFinished": 0
+ },
+ {
+   "EventID": "13",
+   "EventRequierments": "B<10",
+   "Time_Min": 10,
+   "Time_Max": null,
+   "Text": "People are complaining that you run out of beer",
+   "EventEffect": "F-10",
+   "Option1": "Send Tim to buy more beer",
+   "Option1Effect": "F+10;M-10;B+10",
+   "Option2": "Water and Juice only from now on",
+   "Option2Effect": "F-10",
+   "NotFinished": 0
+ },
+ {
+   "EventID": "14",
+   "EventRequierments": "",
+   "Time_Min": 15,
+   "Time_Max": null,
+   "Text": "Marry accuses Jason of cheating on her with Jenna",
+   "EventEffect": "F-5",
+   "Option1": "Tell Marry that you have been with Jason all the time drinking beer and nothing happened",
+   "Option1Effect": "F+7;B-3",
+   "Option2": "Say that you also have not seen both of them in last last hour",
+   "Option2Effect": "F-10",
+   "NotFinished": 0
+ },
+ {
+   "EventID": "15",
+   "EventRequierments": "E4_1",
+   "Time_Min": 15,
+   "Time_Max": null,
+   "Text": "The friends of friends you let in offer to give you 10$ if they can take some beers and leave with them",
+   "EventEffect": "",
+   "Option1": "OK",
+   "Option1Effect": "P-3;B-5;M+10",
+   "Option2": "No way",
+   "Option2Effect": "P-3",
+   "NotFinished": 0
+ },
+ {
+   "EventID": "16",
+   "EventRequierments": "",
+   "Time_Min": 10,
+   "Time_Max": 15,
+   "Text": "The friends of friends you let in try to get Alina totally drunk",
+   "EventEffect": "B-5",
+   "Option1": "Make sure Alina is ok",
+   "Option1Effect": "F-5;",
+   "Option2": "Help them",
+   "Option2Effect": "B-5;F+5",
+   "NotFinished": 0
+ },
+ {
+   "EventID": "",
+   "EventRequierments": "",
+   "Time_Min": 10,
+   "Time_Max": 15,
+   "Text": "The friends of friends smoke weed in garden",
+   "EventEffect": "F+2",
+   "Option1": "Join them",
+   "Option1Effect": "F+10;M-5",
+   "Option2": "Say no drugs allowed here",
+   "Option2Effect": "F-5",
    "NotFinished": 1
  }
 ]
-}
