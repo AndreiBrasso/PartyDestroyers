@@ -133,7 +133,7 @@ public class EffectParameter
             {
                 OnChanged(this);
             }
-            if (_currentValue <= 0 || (_currentValue>=50 && parameterType == ParameterType.Time))
+            if (_currentValue <= 0 || (_currentValue>=20 && parameterType == ParameterType.Time))
             {
                 if(OnFinished != null)
                 {

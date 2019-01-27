@@ -25,12 +25,12 @@ public class EventManager : MonoBehaviour
     {
         float timePassed = parameters[ParameterType.Time].currentValue;
 
-        float gameMinutes = timePassed / 50f * 8 * 60;
+        float gameMinutes = timePassed / 20f * 8 * 60;
 
         int hoursPlayed = Mathf.FloorToInt(gameMinutes / 60);
         int minutesLeft = Mathf.FloorToInt(gameMinutes) - hoursPlayed * 60;
 
-        if (hoursPlayed > 4)
+        if (hoursPlayed > 3)
         {
             return "0" + (hoursPlayed - 4).ToString() + ":" + (minutesLeft < 10 ? "0" : "") + minutesLeft.ToString();
         }

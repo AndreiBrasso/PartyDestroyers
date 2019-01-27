@@ -26,7 +26,7 @@ public class GraphicLogic : MonoBehaviour
 
     void RestartGame()
     {
-        ValueChanged(GameManager.self.eventManager.parameters[parameterType]);
+        graphicElement.SwitchGraphic(0);
     }
     private void ValueChanged(EffectParameter parameter)
     {
