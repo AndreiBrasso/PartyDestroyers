@@ -17,10 +17,22 @@ public class BeerBottle : MonoBehaviour
     {
         GameManager.self.eventManager.parameters[ParameterType.Booze].currentValue--;
         GameManager.self.eventManager.parameters[ParameterType.House].currentValue--;
+
+        GameManager.self.OnRestartGame += RestartGame;
+
         Vector3 pz = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         pz.z = 0;
         gameObject.transform.position = pz; 
-    }    
+    }
+    private void OnDestroy()
+    {
+        GameManager.self.OnRestartGame -= RestartGame;
+    }
+    private void RestartGame()
+    {
+        if(this.gameObject != null)Destroy(this.gameObject);
+    }
+
     // Update is called once per frame
     void Update()
     {

@@ -124,7 +124,7 @@ public class TwitchIRC : MonoBehaviour
         //TODO: remove default in final build
         UpdateTwitchChannel("partybot424");
 
-        GameManager.self.uiManager.retryPanel.OnTwitchChannelSelected += UpdateTwitchChannel;
+        GameManager.self.uiManager.startScreen.OnTwitchChannelSelected += UpdateTwitchChannel;
     }
     void UpdateTwitchChannel(string channel)
     {

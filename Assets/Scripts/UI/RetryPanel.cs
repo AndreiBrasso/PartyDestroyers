@@ -6,19 +6,19 @@ using UnityEngine.UI;
 
 public class RetryPanel : MonoBehaviour
 {
-    public event Action<string> OnTwitchChannelSelected;
+   
 
     [SerializeField]
     Text popupText;
 
-    [SerializeField]
-    InputField twitchChannel;
-
+    public Text time;
     [SerializeField]
     Image icon;
 
     [SerializeField]
     Sprite[] possibleIcons;
+
+   
 
     public void SetText(string text)
     {
@@ -30,14 +30,15 @@ public class RetryPanel : MonoBehaviour
         GameManager.self.Restart();
     }
 
-    public void OnTwitchChannelChange() {
-        if (OnTwitchChannelSelected != null) {
-            OnTwitchChannelSelected(twitchChannel.text);
-        }
-    }
+    
     
     public void SetIcon(ParameterType pType)
     {
+        
         this.icon.sprite = possibleIcons[(int)pType];
+    }
+    public void SetTime(string text)
+    {
+        this.time.text = text;
     }
 }

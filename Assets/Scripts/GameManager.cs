@@ -61,7 +61,9 @@ public class GameManager : MonoBehaviour
             case ParameterType.Time: self.uiManager.retryPanel.SetText("Great Party! The last guests left at " + self.eventManager.GetTimeReadable() + "!"); break;
             case ParameterType.People: self.uiManager.retryPanel.SetText("Everyone left your party... Your party lasted until " + self.eventManager.GetTimeReadable()); break;
             case ParameterType.Money: self.uiManager.retryPanel.SetText("Everyone left your party... Your party lasted until " + self.eventManager.GetTimeReadable()); break;
-        }        
+        }
+        self.uiManager.retryPanel.SetIcon(parameter.parameterType);
+        self.uiManager.retryPanel.SetTime(self.eventManager.GetTimeReadable());
     }
 
     public void Restart()

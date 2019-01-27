@@ -15,14 +15,19 @@ public class GraphicLogic : MonoBehaviour
     private void Start()
     {
         GameManager.self.eventManager.parameters[parameterType].OnChanged += ValueChanged;
+        GameManager.self.OnRestartGame += RestartGame;
     }
 
     private void OnDestroy()
     {
         GameManager.self.eventManager.parameters[parameterType].OnChanged -= ValueChanged;
+        GameManager.self.OnRestartGame -= RestartGame;
     }
 
-    
+    void RestartGame()
+    {
+        ValueChanged(GameManager.self.eventManager.parameters[parameterType]);
+    }
     private void ValueChanged(EffectParameter parameter)
     {
         int value = (int)parameter.currentValue;

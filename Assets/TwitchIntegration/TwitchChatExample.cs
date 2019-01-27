@@ -71,7 +71,7 @@ public class TwitchChatExample : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        GameManager.self.uiManager.retryPanel.OnTwitchChannelSelected += UpdateTwitchChannel;
+        GameManager.self.uiManager.startScreen.OnTwitchChannelSelected += UpdateTwitchChannel;
         IRC = this.GetComponent<TwitchIRC>();
 
         TR = this.GetComponent<TwitchResponses>();
