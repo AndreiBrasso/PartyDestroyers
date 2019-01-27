@@ -74,7 +74,7 @@ public class HUDPanel : MonoBehaviour {
             }
             else
             {
-                SelectOption(UnityEngine.Random.Range(1,2));
+                SelectOption(UnityEngine.Random.Range(1,3));
             }
             timeLeft = 20.0f;
         }
@@ -121,14 +121,15 @@ public class HUDPanel : MonoBehaviour {
 
     public void UpdateValue(EffectParameter parameter)
     {
-         
-         values[(int)parameter.parameterType].fillAmount =  (parameter.currentValue / 100);
-         
+        float max = 100;
+        if (parameter.parameterType == ParameterType.People) max = 30;
+         values[(int)parameter.parameterType].fillAmount =  (parameter.currentValue / max);         
         
     }
 
     public void SelectOption(int option)
     {
+        if (timerStopped) return;
         if (option == 1)
         {
             option1.image.color = new Color(0.86f, 0.9f, 0.8f);
@@ -145,7 +146,7 @@ public class HUDPanel : MonoBehaviour {
     IEnumerator SelectOptionDelayed(int option)
     {
         timerStopped = true;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(.5f);
         timerStopped = false;
         GameManager.self.eventManager.SelectOption(option);
         GameManager.self.PassTime();

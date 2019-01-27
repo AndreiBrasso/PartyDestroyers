@@ -15,11 +15,16 @@ public class Person : MonoBehaviour {
     Sprite[] vomitAnimation;
 
     [SerializeField]
+    float funThreshold = 15;
+
+    [SerializeField]
     SpriteRenderer sR;
     float drunkMeter = 0;
 
     [SerializeField]
     Vomit vomit;
+
+    [SerializeField] AudioSource aSource;
 
     private void Start()
     {
@@ -29,17 +34,18 @@ public class Person : MonoBehaviour {
 
     private void FunChanged(EffectParameter parameter)
     {
-        if(parameter.parameterType == ParameterType.Fun)
-        {
-            if (parameter.currentValue > 15)
+        if(this.gameObject.activeInHierarchy)
+            if(parameter.parameterType == ParameterType.Fun)
             {
-                Dance();
+                if (parameter.currentValue > funThreshold)
+                {
+                    Dance();
+                }
+                else
+                {
+                    Stand();
+                }
             }
-            else
-            {
-                Stand();
-            }
-        }
     }
 
     private void OnEnable()
@@ -53,7 +59,8 @@ public class Person : MonoBehaviour {
         GameManager.self.eventManager.parameters[ParameterType.Fun].currentValue++;
         GameManager.self.eventManager.parameters[ParameterType.House].currentValue++;
         StopAllCoroutines();
-        StartCoroutine(Animate(drinkAnimation,danceAnimation.Length * 4));
+        StartCoroutine(Animate(drinkAnimation,danceAnimation.Length * 4,null));
+        aSource.Play();
     }
 
     public void Dance()
@@ -65,7 +72,7 @@ public class Person : MonoBehaviour {
                 drunkMeter++;
             }
             StopAllCoroutines();
-            StartCoroutine(Animate(danceAnimation, danceAnimation.Length * 10));
+            StartCoroutine(Animate(danceAnimation, danceAnimation.Length * 10,null));
         }
         else
         { 
@@ -78,26 +85,31 @@ public class Person : MonoBehaviour {
     {
       
         StopAllCoroutines();
-        StartCoroutine(Animate(standAnimation, standAnimation.Length));
+        StartCoroutine(Animate(standAnimation, standAnimation.Length,null));
     
     }
     public void Vomit()
     {
         drunkMeter = 2;
-        var v = Instantiate(vomit);
-        v.transform.SetParent(this.transform.parent.parent);
-        v.transform.position = this.transform.position;
+        
         StopAllCoroutines();
-        StartCoroutine(Animate(standAnimation, vomitAnimation.Length));
+        StartCoroutine(Animate(vomitAnimation, vomitAnimation.Length, delegate()
+        {
+            var v = Instantiate(vomit);
+            v.transform.SetParent(this.transform.parent.parent);
+            v.transform.position = this.transform.position;
+        }
+        ));
     }
 
-    public IEnumerator Animate(Sprite[] animation, int animationFrames)
+    public IEnumerator Animate(Sprite[] animation, int animationFrames, System.Action completed)
     {
         for(int i = 0; i<animationFrames; i++)
         {
             this.sR.sprite = animation[i % animation.Length];
             yield return new WaitForSeconds(GameManager.self.animationDelay);
         }
+        if (completed != null) completed();
         Stand();
     }
 

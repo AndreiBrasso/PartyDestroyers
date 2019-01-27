@@ -53,8 +53,7 @@ public class GameEvent
                     dictionary.Add(ParameterType.House, Int32.Parse(req.Substring(1)));
                     break;
                 case "B":
-                    dictionary.Add(ParameterType.Booze, Int32.Parse(req.Substring(1)));
-                    Debug.Log("added booze");
+                    dictionary.Add(ParameterType.Booze, Int32.Parse(req.Substring(1))); 
                     break;
                 case "F":
                     dictionary.Add(ParameterType.Fun, Int32.Parse(req.Substring(1)));
@@ -134,7 +133,7 @@ public class EffectParameter
             {
                 OnChanged(this);
             }
-            if (_currentValue <= 0)
+            if (_currentValue <= 0 || (_currentValue>=50 && parameterType == ParameterType.Time))
             {
                 if(OnFinished != null)
                 {

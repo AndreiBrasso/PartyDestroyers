@@ -100,6 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rbody: {fileID: 50728273811454858}
+  ciob1: {fileID: 1817693652363006, guid: b7e65af03c4345d4abbc3b7f3c57e01a, type: 2}
+  ciob2: {fileID: 1085546904794752, guid: e6df9e74d9a4f28439def79c86681550, type: 2}
 --- !u!212 &212455773856062360
 SpriteRenderer:
   m_ObjectHideFlags: 1

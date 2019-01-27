@@ -8,6 +8,8 @@ public class PropCounter : MonoBehaviour {
     public int[] valueStages;
     public GameObject[] objectsToMakeVisible;
 
+    public bool inversed;
+
     private void Start()
     {
         GameManager.self.eventManager.parameters[parameter].OnChanged += ParameterChanged;
@@ -25,25 +27,46 @@ public class PropCounter : MonoBehaviour {
 
     private void ParameterChanged(EffectParameter parameter)
     {
-        foreach (var ob in objectsToMakeVisible)
-        {
-            ob.gameObject.SetActive(false);
-        }
+        
         if (parameter.parameterType == this.parameter)
         {
             for (int i = 0; i < valueStages.Length; i++)
             {
-                if (parameter.currentValue >= valueStages[i])
+                if(inversed)
                 {
-                    if (objectsToMakeVisible.Length > i)
+                    if (parameter.currentValue <= valueStages[i])
                     {
-                        objectsToMakeVisible[i].gameObject.SetActive(true);
+                        if (objectsToMakeVisible.Length > i)
+                        {
+                            objectsToMakeVisible[i].gameObject.SetActive(true);
+                        }
+                    }
+                    else
+                    {
+                        if (objectsToMakeVisible.Length > i)
+                        {
+                            objectsToMakeVisible[i].gameObject.SetActive(false);
+                        }
                     }
                 }
                 else
                 {
-                    break;
+                    if (parameter.currentValue >= valueStages[i])
+                    {
+                        if (objectsToMakeVisible.Length > i)
+                        {
+                            objectsToMakeVisible[i].gameObject.SetActive(true);
+                        }
+                    }
+                    else
+                    {
+                        if (objectsToMakeVisible.Length > i)
+                        {
+                            objectsToMakeVisible[i].gameObject.SetActive(false);
+                        }
+                    }
                 }
+                
             }
         }
         

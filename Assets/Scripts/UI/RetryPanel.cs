@@ -14,6 +14,12 @@ public class RetryPanel : MonoBehaviour
     [SerializeField]
     InputField twitchChannel;
 
+    [SerializeField]
+    Image icon;
+
+    [SerializeField]
+    Sprite[] possibleIcons;
+
     public void SetText(string text)
     {
         popupText.text = text;
@@ -29,5 +35,9 @@ public class RetryPanel : MonoBehaviour
             OnTwitchChannelSelected(twitchChannel.text);
         }
     }
-    	 
+    
+    public void SetIcon(ParameterType pType)
+    {
+        this.icon.sprite = possibleIcons[(int)pType];
+    }
 }

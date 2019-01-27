@@ -25,7 +25,7 @@ public class EventManager : MonoBehaviour
     {
         float timePassed = parameters[ParameterType.Time].currentValue;
 
-        float gameMinutes = timePassed / 100f * 8 * 60;
+        float gameMinutes = timePassed / 50f * 8 * 60;
 
         int hoursPlayed = Mathf.FloorToInt(gameMinutes / 60);
         int minutesLeft = Mathf.FloorToInt(gameMinutes) - hoursPlayed * 60;

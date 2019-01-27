@@ -10,6 +10,9 @@ public class BeerBottle : MonoBehaviour
 
     public Rigidbody2D rbody;
 
+    public GameObject ciob1;
+    public GameObject ciob2;
+
     private void Start()
     {
         GameManager.self.eventManager.parameters[ParameterType.Booze].currentValue--;
@@ -31,6 +34,7 @@ public class BeerBottle : MonoBehaviour
         {
             finishedInteraction = true;
             rbody.WakeUp();
+            
         }
     }
 
@@ -40,6 +44,19 @@ public class BeerBottle : MonoBehaviour
         {
             collision.collider.GetComponent<Person>().Drink();
             Destroy(this.gameObject);
+        }
+        else if(!Input.GetMouseButton(0))
+        {
+            var c1 = Instantiate(ciob1, this.transform.position, Quaternion.identity);
+            c1.transform.SetParent(this.transform.parent);
+            c1.transform.localScale = Vector3.one;
+
+            var c2 = Instantiate(ciob2, this.transform.position, Quaternion.identity);
+            c2.transform.SetParent(this.transform.parent);
+            c2.transform.localScale = Vector3.one;
+
+            Destroy(this.gameObject);
+            
         }
     }
 }
